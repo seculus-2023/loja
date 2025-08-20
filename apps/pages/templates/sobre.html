@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Sobre{% endblock %}
+
+{% block content %}
+<h1>Sobre</h1> 
+
+	<!-- Bloco 1 - Intro -->
+    <section>
+        <div class="container py-lg-5">
+            <div class="row">
+                <div class="col-md-6 col-lg-5">
+                    <div class="d-flex align-items-center">
+                        <img src="{% static 'images/BannerLogo.png' %}"
+                            class="rounded-5 object-fit-cover d-block w-100" height="550" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-7 pl-lg-5 py-md-5">
+                    <div class="row justify-content-start pb-3">
+                        <div class="col-md-12 p-4 p-lg-5">
+                            <h2 class="mb-4">Somos a <span class="text-primary">JJPrincess</span>, Luxo, Estilo e Qualidade Excepcionais
+                            </h2>
+                            <p>
+                                Descubra o universo da Princess Sunglass, onde a elegância e a qualidade se encontram em cada detalhe. Acreditamos que um par de óculos de sol é mais do que um acessório — é uma declaração de estilo e uma expressão de sua personalidade.
+                            </p>
+                            <p>        
+                                Nossos produtos são criados com o compromisso de oferecer Excellence and Quality, garantindo não apenas um design impecável, mas também proteção e conforto para os seus olhos. Combinando o glamour da alta-costura com a funcionalidade do dia a dia, cada peça é cuidadosamente elaborada para proporcionar uma experiência única.
+                            </p>
+                            <p>        
+                                Siga-nos em nossas redes sociais, @jjprincess_oficial, para ficar por dentro das últimas tendências, coleções exclusivas e dicas de estilo que farão você se sentir uma verdadeira princesa. Na Princess Sunglass, o seu brilho é a nossa inspiração.
+                            </p>
+                            <p>
+                                Telefone para contato: <strong>+55 65 981132995</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div style="margin-bottom:12px; text-align:center;">
+                        <a href="https://wa.me/5565981132995" target="_blank" style="margin:0 10px; color:#25d366; text-decoration:none; font-size:1.5em;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16" style="vertical-align:middle;"><path d="M13.601 2.326A7.956 7.956 0 0 0 8.002.001C3.582.001.001 3.582.001 8c0 1.409.368 2.775 1.064 3.98L.057 15.013a.5.5 0 0 0 .63.63l3.033-1.008A7.956 7.956 0 0 0 8.002 15.999c4.418 0 7.999-3.581 7.999-7.999a7.956 7.956 0 0 0-2.4-5.674ZM8.002 14.999a6.96 6.96 0 0 1-3.695-1.07.5.5 0 0 0-.41-.054l-2.563.854.854-2.563a.5.5 0 0 0-.054-.41A6.96 6.96 0 0 1 1.001 8c0-3.866 3.135-7 7.001-7 3.866 0 7 3.134 7 7 0 3.866-3.134 7-7 7Zm3.225-4.146c-.183-.092-1.082-.535-1.249-.596-.167-.062-.288-.092-.408.092-.12.183-.467.596-.572.719-.104.12-.211.137-.394.046-.183-.092-.772-.285-1.47-.91-.543-.484-.91-1.084-1.018-1.267-.104-.183-.011-.282.08-.374.082-.082.183-.211.274-.316.092-.104.122-.183.183-.305.062-.12.031-.228-.015-.32-.046-.092-.408-.98-.559-1.34-.147-.354-.297-.305-.408-.311-.104-.006-.228-.007-.351-.007a.678.678 0 0 0-.49.229c-.167.183-.64.623-.64 1.516 0 .893.655 1.755.747 1.876.092.12 1.288 1.967 3.13 2.68.438.189.779.302 1.045.386.439.14.839.12 1.155.073.352-.052 1.082-.443 1.235-.87.152-.426.152-.791.106-.87-.046-.08-.167-.12-.35-.211Z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/jjprincessmodas" target="_blank" style="margin:0 10px; color:#E1306C; text-decoration:none; font-size:1.5em;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16" style="vertical-align:middle;"><path d="M8 3c1.657 0 1.86.006 2.513.036.653.03 1.09.137 1.343.23.324.12.556.265.8.509.244.244.389.476.509.8.093.253.2.69.23 1.343C12.994 6.14 13 6.343 13 8c0 1.657-.006 1.86-.036 2.513-.03.653-.137 1.09-.23 1.343-.12.324-.265.556-.509.8-.244.244-.476.389-.8.509-.253.093-.69.2-1.343.23C9.86 12.994 9.657 13 8 13c-1.657 0-1.86-.006-2.513-.036-.653-.03-1.09-.137-1.343-.23-.324-.12-.556-.265-.8-.509-.244-.244-.389-.476-.509-.8-.093-.253-.2-.69-.23-1.343C3.006 9.86 3 9.657 3 8c0-1.657.006-1.86.036-2.513.03-.653.137-1.09.23-1.343.12-.324.265-.556.509-.8.244-.244.476-.389.8-.509.253-.093.69-.2 1.343-.23C6.14 3.006 6.343 3 8 3zm0-1C6.326 2 6.107 2.007 5.447 2.037c-.66.03-1.11.137-1.497.29a2.978 2.978 0 0 0-1.09.708A2.978 2.978 0 0 0 2.037 5.447c-.153.387-.26.837-.29 1.497C2.007 6.107 2 6.326 2 8c0 1.674.007 1.893.037 2.553.03.66.137 1.11.29 1.497a2.978 2.978 0 0 0 .708 1.09 2.978 2.978 0 0 0 1.09.708c.387.153.837.26 1.497.29.66.03.879.037 2.553.037s1.893-.007 2.553-.037c.66-.03 1.11-.137 1.497-.29a2.978 2.978 0 0 0 1.09-.708 2.978 2.978 0 0 0 .708-1.09c.153-.387.26-.837.29-1.497.03-.66.037-.879.037-2.553s-.007-1.893-.037-2.553c-.03-.66-.137-1.11-.29-1.497a2.978 2.978 0 0 0-.708-1.09 2.978 2.978 0 0 0-1.09-.708c-.387-.153-.837-.26-1.497-.29C9.893 2.007 9.674 2 8 2zm0 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0 1a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm4.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/jjprincessmodas" target="_blank" style="margin:0 10px; color:#1877F3; text-decoration:none; font-size:1.5em;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16" style="vertical-align:middle;"><path d="M8.94 8.5H10V6.75h-1.06V6c0-.29.09-.5.5-.5h.56V4.5H9.44c-1.1 0-1.44.56-1.44 1.44v.81H7V8.5h1v4.5h1.94V8.5z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Fim Bloco 1 - Intro -->
+
+
+{% endblock %} 
+
+{% block scripts %} 
+{% endblock scripts %}

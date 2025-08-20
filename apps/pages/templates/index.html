@@ -1,0 +1,344 @@
+{% extends 'base.html' %}
+
+{% block title %}Pagina 1{% endblock %}
+
+{% block content %} 
+
+<!-- Bloco 1 - Intro -->
+    <section>
+        <div class="container py-lg-5">
+            <div class="row">
+                <div class="col-md-6 col-lg-5">
+                    <div class="d-flex align-items-center">
+                        <img src="https://media.unimedcampinas.com.br/cd19560e-c394-481d-99a5-702d4a89d590"
+                            class="rounded-5 object-fit-cover d-block w-100" height="550" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-7 pl-lg-5 py-md-5">
+                    <div class="row justify-content-start pb-3">
+                        <div class="col-md-12 p-4 p-lg-5">
+                            <h2 class="mb-4">Somos a <span class="text-primary">ABC EMPRESA</span>, uma empresa medica
+                            </h2>
+                            <p>Nossa missão é fornecer soluções inovadoras e de alta qualidade para atender às
+                                necessidades da área da saúde.</p>
+                            <p>Nosso compromisso é oferecer equipamentos de última geração que proporcionem resultados
+                                precisos e confiáveis.</p>
+                            <p>
+                                <a href="#" class="btn btn-primary py-3 px-4">Sobre Nos</a>
+                                <a href="{% url 'contato' %}" class="btn btn-secondary py-3 px-4">Entre em contato conosco</a>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Fim Bloco 1 - Intro -->
+	<!-- Bloco Nossos Serviços -->
+    <section>
+        <div class="container py-lg-5">
+            <div class="row justify-content-center pb-5">
+                <div class="col-md-12">
+                    <h2 class="mb-3">Nossos Serviços</h2>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 d-flex align-self-stretch">
+                    <div class="d-flex gap-4">
+                        <div class="rounded bg-primary text-white p-5">
+                            <i class="fas fa-medkit fa-3x"></i>
+                        </div>
+                        <div class="media-body pl-md-4">
+                            <h3 class="text-dark text-decoration-none mb-3">Kits Médicos</h3>
+                            <p>Oferecemos uma variedade de kits médicos completos e prontos para uso e montados para
+                                atender às necessidades específicas de cada tipo de
+                                procedimento médico. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex align-self-stretch">
+                    <div class="d-flex gap-4">
+                        <div class="rounded bg-primary text-white p-5">
+                            <i class="fas fa-stethoscope fa-3x"></i>
+                        </div>
+                        <div class="media-body pl-md-4">
+                            <h3 class="text-dark text-decoration-none mb-3">Produtos Químicos</h3>
+                            <p>Nossa empresa oferece uma ampla variedade de produtos químicos essenciais para o campo da
+                                saúde. Trabalhamos com os melhores fornecedores para garantir a qualidade e segurança.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex align-self-stretch">
+                    <div class="d-flex gap-4">
+                        <div class="rounded bg-primary text-white p-5">
+                            <i class="fas fa-user-md fa-3x"></i>
+                        </div>
+                        <div class="media-body pl-md-4">
+                            <h3 class="text-dark text-decoration-none mb-3">Equipe Qualificada</h3>
+                            <p>Contamos com uma equipe altamente qualificada de profissionais de saúde. Nossos
+                                especialistas possuem amplo conhecimento e experiência garantindo um atendimento de
+                                qualidade e eficiência.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex align-self-stretch">
+                    <div class="d-flex gap-4">
+                        <div class="rounded bg-primary text-white p-5">
+                            <i class="fas fa-syringe fa-3x"></i>
+                        </div>
+                        <div class="media-body pl-md-4">
+                            <h3 class="text-dark text-decoration-none mb-3">Equipamentos</h3>
+                            <p>Oferecemos uma ampla variedade equipamentos médicos de última geração. Nossos equipamentos
+                                são projetados para atender às necessidades de diferentes áreas da saúde.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Fim Bloco Nossos Serviços -->
+
+	<!-- Banner 1 -->
+    <section>
+        <div class="banner">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-9 text-center">
+                        <h2 class="fw-bold">Sua saúde é nossa prioridade</h2>
+                        <p>Podemos administrar seu projeto dos sonhos. Um pequeno rio chamado ABC Empresa flui próximo
+                            ao nosso local.</p>
+                        <p class="mb-0"><a href="#" class="btn btn-primary btn-lg px-4 py-3">Pesquisar Áreas</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Fim Banner 1 -->
+
+	<!-- Areas Especialidades -->
+    <section>
+        <div class="container text-center py-lg-5">
+            <div class="row justify-content-center pb-5">
+                <div class="col-md-12">
+                    <h2 class="mb-3">Áreas de Especialidades</h2>
+                </div>
+            </div>
+            <div class="row gap-3">
+                <div class="col p-4 bg-light rounded-5">
+                    <img src="https://img.freepik.com/fotos-gratis/jovem-medico-bonito-em-uma-tunica-medica-com-estetoscopio_1303-17818.jpg?w=2000"
+                        class="rounded-circle object-fit-cover" width="150" height="150" alt="">
+                    <h3><a class="link-dark text-decoration-none" href="#">Medicina</a></h3>
+                    <p>Envolve o diagnóstico, tratamento e prevenção de doenças e lesões, utilizando uma variedade de
+                        abordagens, como medicamentos, cirurgias e terapias.</p>
+                </div>
+                <div class="col p-4 bg-light rounded-5">
+                    <img src="https://img.freepik.com/fotos-gratis/enfermeira-negra-em-seu-espaco-de-trabalho_52683-100580.jpg?w=2000"
+                        class="rounded-circle object-fit-cover" width="150" height="150" alt="">
+                    <h3><a class="link-dark text-decoration-none" href="#">Enfermagem</a></h3>
+                    <p>Cuida dos pacientes, fornecendo cuidados diretos, administrando medicamentos, monitorando sinais
+                        vitais e auxiliando no processo de recuperação.</p>
+                </div>
+                <div class="col p-4 bg-light rounded-5">
+                    <img src="https://img.freepik.com/fotos-premium/fisioterapeuta-tratando-perna-ferida-de-paciente-do-sexo-masculino_229060-150.jpg"
+                        class="rounded-circle object-fit-cover" width="150" height="150" alt="">
+                    <h3><a class="link-dark text-decoration-none" href="#">Fisioterapia</a></h3>
+                    <p>Ajuda na reabilitação e tratamento de lesões ou condições físicas por meio de terapias físicas,
+                        exercícios e técnicas manuais.</p>
+                </div>
+                <div class="col p-4 bg-light rounded-5">
+                    <img src="https://img.freepik.com/fotos-gratis/dentista-examinando-uma-paciente-do-sexo-feminino-com-ferramentas_107420-65429.jpg?w=360"
+                        class="rounded-circle object-fit-cover" width="150" height="150" alt="">
+                    <h3><a class="link-dark text-decoration-none" href="#">Odontologia</a></h3>
+                    <p>Envolve o diagnóstico, prevenção e tratamento de doenças e condições orais, como cáries, doença
+                        periodontal e problemas de má oclusão.</p>
+                </div>
+                <div class="col p-4 bg-light rounded-5">
+                    <img src="https://img.freepik.com/fotos-gratis/jovem-mulher-caucasiana-recebendo-massagem-anti-idade_1098-18121.jpg"
+                        class="rounded-circle object-fit-cover" width="150" height="150" alt="">
+                    <h3><a class="link-dark text-decoration-none" href="#">Estética</a></h3>
+                    <p>A estética está relacionada a procedimentos e tratamentos que visam melhorar a aparência estética
+                        do corpo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Area Especialidades -->
+
+	<!-- Indices -->
+    <section>
+        <div class="banner">
+            <div class="container py-lg-5">
+                <div class="row d-flex align-items-center">
+                    <div class="col-md-5">
+                        <span>INDICE DE SATISFAÇÃO</span>
+                        <h2 class="mb-4 fs-1">Mais de 5.100 profissionais confiam em nós</h2>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="row pt-4">
+                            <div class="col-md-6 d-flex justify-content-center">
+                                <div class="fs-2">
+                                    <strong class="text-primary">30</strong>
+                                    <span>Anos de Experiência</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-center">
+                                <div class="fs-2">
+                                    <strong class="text-primary">+100.000</strong>
+                                    <span>Equipamentos</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-center">
+                                <div class="fs-2">
+                                    <strong class="text-primary">+6.000</strong>
+                                    <span>Profissionais</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-center">
+                                <div class="fs-2">
+                                    <strong class="text-primary">100%</strong>
+                                    <span>De Satisfação</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    	<!-- Depoimentos -->
+    <section>
+        <div class="container py-lg-5">
+            <div class="row justify-content-center pb-5">
+                <div class="col-md-10 text-center">
+                    <h2 class="mb-4">Obtenha todas as atualizações aqui</h2>
+                    <p>Depoimentos de profissionais que utilizaram nossos produtos</p>
+                </div>
+            </div>
+
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+                <div class="carousel-inner text-center">
+                    <div class="carousel-item active">
+                        <img src="https://img.freepik.com/fotos-gratis/jovem-medico-bonito-em-uma-tunica-medica-com-estetoscopio_1303-17818.jpg?w=2000"
+                            class="rounded-circle object-fit-cover" width="150" height="150" alt="">
+                        <p class="fst-italic fs-3"><i class="fas fa-quote-left fa-2x"></i> Recentemente, tive a
+                            oportunidade de utilizar um monitor
+                            cardíaco portátil durante uma estadia no hospital. Fiquei extremamente impressionado com a
+                            eficácia e a utilidade desse equipamento médico. <i class="fas fa-quote-right fa-2x"></i>
+                        </p>
+                        <p>12 de junho 2023</p>
+                        <p><strong>Leticia Lima</strong></p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://img.freepik.com/fotos-gratis/jovem-medico-bonito-em-uma-tunica-medica-com-estetoscopio_1303-17818.jpg?w=2000"
+                            class="rounded-circle object-fit-cover" width="150" height="150" alt="">
+                        <p class="fst-italic fs-3"><i class="fas fa-quote-left fa-2x"></i> tive a oportunidade de
+                            utilizar um monitor
+                            cardíaco portátil durante uma estadia no hospital. Fiquei extremamente impressionado com a
+                            eficácia e a utilidade desse equipamento médico. <i class="fas fa-quote-right fa-2x"></i>
+                        </p>
+                        <p>12 de junho 2023</p>
+                        <p><strong>Leticia Lima</strong></p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://img.freepik.com/fotos-gratis/jovem-medico-bonito-em-uma-tunica-medica-com-estetoscopio_1303-17818.jpg?w=2000"
+                            class="rounded-circle object-fit-cover" width="150" height="150" alt="">
+                        <p class="fst-italic fs-3"><i class="fas fa-quote-left fa-2x"></i> oportunidade de utilizar um
+                            monitor
+                            cardíaco portátil durante uma estadia no hospital. Fiquei extremamente impressionado com a
+                            eficácia e a utilidade desse equipamento médico. <i class="fas fa-quote-right fa-2x"></i>
+                        </p>
+                        <p>12 de junho 2023</p>
+                        <p><strong>Leticia Lima</strong></p>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </section>
+
+<!-- Contato -->
+    <section>
+        <div class="container py-lg-5">
+            <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-7 text-center">
+                    <h2 class="mb-4">Entre em contato conosco</h2>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col">
+                    <div class="h-100 align-self-stretch box p-4 text-center bg-light">
+                        <i class="fas fa-home fa-4x"></i>
+                        <h3 class="mb-4">Endereço</h3>
+                        <p>198 West 21th Street, Suite 721 New York NY 10016</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="h-100 align-self-stretch box p-4 text-center bg-light">
+                        <i class="fas fa-phone fa-4x"></i>
+                        <h3 class="mb-4">WhatsApp</h3>
+                        <p><a class="link-dark text-decoration-none" href="tel://1234567920">(16) 9 9425-6485</a></p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="h-100 align-self-stretch box p-4 text-center bg-light">
+                        <i class="fas fa-at fa-4x"></i>
+                        <h3 class="mb-4">E-mail</h3>
+                        <p><a class="link-dark text-decoration-none"
+                                href="mailto:contato.leticialima.me@gmail.com">contato.leticialima.me@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="h-100 align-self-stretch box p-4 text-center bg-light">
+                        <i class="fas fa-globe fa-4x"></i>
+                        <h3 class="mb-4">Site</h3>
+                        <p><a class="link-dark text-decoration-none" href="#">seusite.com.br</a></p>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </section>
+<!-- footer -->
+    <section>
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <div class="col-md-4 d-flex align-items-center">
+                    <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                        <svg class="bi" width="30" height="24">
+                            <use xlink:href="#bootstrap"></use>
+                        </svg>
+                    </a>
+                    <span class="mb-3 mb-md-0 text-body-secondary">© 2025 Seculus Desenvolvimento e Consultoria Ltda</span>
+                </div>
+
+                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                    <li class="ms-3"><a class="text-body-secondary" href="#">
+                            <i class="fas fa-home"></i>
+                        </a></li>
+                    <li class="ms-3"><a class="text-body-secondary" href="#">
+                            <i class="fas fa-at"></i>
+                        </a></li>
+                    <li class="ms-3"><a class="text-body-secondary" href="#">
+                            <i class="fas fa-globe"></i>
+                        </a></li>
+                </ul>
+            </footer>
+        </div>
+    </section>
+    <!-- Fim Indice -->
+{% comment %} 
+    <footer style="margin-top:40px; text-align:center; color:#444; font-size:1.1em; background:#f8f9fa; padding:24px 0; border-top:1px solid #e0e0e0;">
+        <div style="margin-bottom:12px;">
+            <a href="https://wa.me/5565981132995" target="_blank" style="margin:0 10px; color:#25d366; text-decoration:none; font-size:1.5em;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16" style="vertical-align:middle;"><path d="M13.601 2.326A7.956 7.956 0 0 0 8.002.001C3.582.001.001 3.582.001 8c0 1.409.368 2.775 1.064 3.98L.057 15.013a.5.5 0 0 0 .63.63l3.033-1.008A7.956 7.956 0 0 0 8.002 15.999c4.418 0 7.999-3.581 7.999-7.999a7.956 7.956 0 0 0-2.4-5.674ZM8.002 14.999a6.96 6.96 0 0 1-3.695-1.07.5.5 0 0 0-.41-.054l-2.563.854.854-2.563a.5.5 0 0 0-.054-.41A6.96 6.96 0 0 1 1.001 8c0-3.866 3.135-7 7.001-7 3.866 0 7 3.134 7 7 0 3.866-3.134 7-7 7Zm3.225-4.146c-.183-.092-1.082-.535-1.249-.596-.167-.062-.288-.092-.408.092-.12.183-.467.596-.572.719-.104.12-.211.137-.394.046-.183-.092-.772-.285-1.47-.91-.543-.484-.91-1.084-1.018-1.267-.104-.183-.011-.282.08-.374.082-.082.183-.211.274-.316.092-.104.122-.183.183-.305.062-.12.031-.228-.015-.32-.046-.092-.408-.98-.559-1.34-.147-.354-.297-.305-.408-.311-.104-.006-.228-.007-.351-.007a.678.678 0 0 0-.49.229c-.167.183-.64.623-.64 1.516 0 .893.655 1.755.747 1.876.092.12 1.288 1.967 3.13 2.68.438.189.779.302 1.045.386.439.14.839.12 1.155.073.352-.052 1.082-.443 1.235-.87.152-.426.152-.791.106-.87-.046-.08-.167-.12-.35-.211Z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/jjprincessmodas" target="_blank" style="margin:0 10px; color:#E1306C; text-decoration:none; font-size:1.5em;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16" style="vertical-align:middle;"><path d="M8 3c1.657 0 1.86.006 2.513.036.653.03 1.09.137 1.343.23.324.12.556.265.8.509.244.244.389.476.509.8.093.253.2.69.23 1.343C12.994 6.14 13 6.343 13 8c0 1.657-.006 1.86-.036 2.513-.03.653-.137 1.09-.23 1.343-.12.324-.265.556-.509.8-.244.244-.476.389-.8.509-.253.093-.69.2-1.343.23C9.86 12.994 9.657 13 8 13c-1.657 0-1.86-.006-2.513-.036-.653-.03-1.09-.137-1.343-.23-.324-.12-.556-.265-.8-.509-.244-.244-.389-.476-.509-.8-.093-.253-.2-.69-.23-1.343C3.006 9.86 3 9.657 3 8c0-1.657.006-1.86.036-2.513.03-.653.137-1.09.23-1.343.12-.324.265-.556.509-.8.244-.244.476-.389.8-.509.253-.093.69-.2 1.343-.23C6.14 3.006 6.343 3 8 3zm0-1C6.326 2 6.107 2.007 5.447 2.037c-.66.03-1.11.137-1.497.29a2.978 2.978 0 0 0-1.09.708A2.978 2.978 0 0 0 2.037 5.447c-.153.387-.26.837-.29 1.497C2.007 6.107 2 6.326 2 8c0 1.674.007 1.893.037 2.553.03.66.137 1.11.29 1.497a2.978 2.978 0 0 0 .708 1.09 2.978 2.978 0 0 0 1.09.708c.387.153.837.26 1.497.29.66.03.879.037 2.553.037s1.893-.007 2.553-.037c.66-.03 1.11-.137 1.497-.29a2.978 2.978 0 0 0 1.09-.708 2.978 2.978 0 0 0 .708-1.09c.153-.387.26-.837.29-1.497.03-.66.037-.879.037-2.553s-.007-1.893-.037-2.553c-.03-.66-.137-1.11-.29-1.497a2.978 2.978 0 0 0-.708-1.09 2.978 2.978 0 0 0-1.09-.708c-.387-.153-.837-.26-1.497-.29C9.893 2.007 9.674 2 8 2zm0 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0 1a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm4.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/jjprincessmodas" target="_blank" style="margin:0 10px; color:#1877F3; text-decoration:none; font-size:1.5em;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16" style="vertical-align:middle;"><path d="M8.94 8.5H10V6.75h-1.06V6c0-.29.09-.5.5-.5h.56V4.5H9.44c-1.1 0-1.44.56-1.44 1.44v.81H7V8.5h1v4.5h1.94V8.5z"/></svg>
+            </a>
+        </div>
+    </footer> {% endcomment %}
+
+{% endblock %}

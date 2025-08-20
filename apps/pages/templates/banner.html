@@ -1,0 +1,42 @@
+    <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
+        
+        <div class="carousel-indicators">
+            {% for banner in banners %}
+                <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="{{ forloop.counter0 }}" 
+                    {% if forloop.first %}class="active" aria-current="true"{% endif %} 
+                    aria-label="Slide {{ forloop.counter }}">
+                </button>
+            {% endfor %}
+        </div>
+
+        <div class="carousel-inner">
+            {% for banner in banners %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img src="{{ banner.imagem.url }}" class="d-block w-100 banner-image" alt="{{ banner.nome }}">
+                    <div class="carousel-caption d-none d-md-block">
+                        {% comment %} <h5>{{ banner.nome }}</h5>
+                        <p>{{ banner.descricao }}</p> {% endcomment %}
+                    </div>
+                </div>
+            {% empty %}
+                <div class="carousel-item active">
+                    <img src="https://via.placeholder.com/1200x400" class="d-block w-100 banner-image" alt="Banner Padrão">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Nenhum banner cadastrado</h5>
+                        <p>Visite a área administrativa para adicionar novos banners.</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+        </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

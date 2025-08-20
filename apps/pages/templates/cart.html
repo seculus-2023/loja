@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% block title %}Carrinho{% endblock %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Carrinho</h1>
+    <a href="{% url 'category_list' %}" class="btn btn-secondary">&larr; Voltar às categorias</a>
+
+    {% if carts %}
+    <div class="mt-4 text-end">
+        <button class="btn btn-success mt-2" id="whatsapp-btn">Enviar carrinho para o WhatsApp</button>
+        <button class="btn btn-primary mt-2 ms-2" id="email-btn">Enviar todos por Email</button>
+    </div>
+
+    <script>
+    document.getElementById('whatsapp-btn').addEventListener('click', function() {
+        let mensagem = '🛒 *Carrinho de compras* %0A%0A';
+        let rows = document.querySelectorAll('table.table-bordered tbody tr');
+        rows.forEach(function(row) {
+            let produto = row.cells[1].innerText.trim();
+            let qtde = row.cells[2].innerText.trim();
+            let subtotal = row.cells[3].innerText.trim();
+            let total = row.cells[4].innerText.trim();
+            mensagem += `• ${produto} | Qtde: ${qtde} | Subtotal: ${subtotal} | Total: ${total}%0A`;
+        });
+        let totalCarrinho = document.querySelector('.fw-bold:last-child');
+        if (totalCarrinho) {
+            mensagem += `%0A💰 ${totalCarrinho.innerText}`;
+        }
+        let telefone = '5565981132995';
+        let url = 'https://wa.me/' + telefone + '?text=' + mensagem;
+        window.open(url, '_blank');
+    });
+
+    document.getElementById('email-btn').addEventListener('click', function() {
+        let mensagem = 'Carrinho de compras:\n';
+        let rows = document.querySelectorAll('table.table-bordered tbody tr');
+        rows.forEach(function(row) {
+            let produto = row.cells[1].innerText.trim();
+            let qtde = row.cells[2].innerText.trim();
+            let subtotal = row.cells[3].innerText.trim();
+            let total = row.cells[4].innerText.trim();
+            mensagem += `• ${produto} | Qtde: ${qtde} | Subtotal: ${subtotal} | Total: ${total}%0A`;
+        });
+        let totalCarrinho = document.querySelector('.fw-bold:last-child');
+        if (totalCarrinho) {
+            mensagem += `%0A💰 ${totalCarrinho.innerText}`;
+        }
+        let destinatario = 'arpjunior40@gmail.com';
+        let url = 'mailto:' + destinatario + '?subject=Meu Carrinho&body=' + encodeURIComponent(mensagem);
+        window.open(url, '_blank');
+    });
+    </script>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Produtos</th>
+                <th>Qtde</th>
+                <th>Subtotal</th>
+                <th>Total</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cart in carts %}
+            <tr>
+                <td>
+                    {% if cart.product and cart.product.image %}
+                        <img src="{{ cart.product.image.url }}" alt="{{ cart.product.title }}" width="80" height="80">
+                    {% elif cart.title %}
+                        <img src="{% static 'images/BannerLogo.png' %}" alt="{{ cart.title }}" width="80" height="80">
+                    {% else %}
+                        <img src="{% static 'images/BannerLogo.png' %}" alt="Sem produto" width="80" height="80">
+                    {% endif %}
+                </td>
+                <td>
+                    {% if cart.product %}
+                        {{ cart.product.title }}
+                    {% elif cart.title %}
+                        {{ cart.title }}
+                    {% else %}
+                        Sem produto
+                    {% endif %}
+                </td>
+                <td>{{ cart.qtde }}</td>
+                <td>R$ {{ cart.subtotal|floatformat:2 }}</td>
+                <td>R$ {{ cart.total|floatformat:2 }}</td>
+                <td>
+                    <form method="post" action="{% url 'cart' %}" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="delete_cart_id" value="{{ cart.id }}">
+                        <button type="submit" class="btn btn-danger btn-sm" title="Excluir item">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% comment %} Totalizador de itens e preço {% endcomment %}
+    <div class="d-flex justify-content-end gap-4 mb-3">
+        <span class="fw-bold">Total de itens: {{ total_itens }}</span>
+        <span class="fw-bold">Total do carrinho: R$ {{ cart_total|floatformat:2 }}</span>
+    </div>
+
+    {% else %}
+    <p class="text-muted">Carrinho vazio.</p>
+    {% endif %}
+</div>
+{% endblock %}
