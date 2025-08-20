@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block title %}Pedido{% endblock %}
+{% load static %}
+
+{% block content %}
+<div class="container d-flex justify-content-center">
+    <div class="col-md-8">
+        <h1 class="text-center mb-4">Informações do Pedido</h1>
+
+        <form method="POST" id="pedido-form">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                <label for="id_nome">Nome</label>
+                <input type="text" 
+                       name="nome" 
+                       id="id_nome" 
+                       class="form-control" 
+                       placeholder="Digite seu nome"
+                       value="{{ form.nome.value|default_if_none:'' }}">
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="id_telefone">Telefone</label>
+                <input type="text" 
+                       name="telefone" 
+                       id="id_telefone" 
+                       class="form-control" 
+                       placeholder="(XX) XXXXX-XXXX"
+                       value="{{ form.telefone.value|default_if_none:'' }}">
+            </div>
+        </form>
+
+        {% if carts and carts|length > 0 %}
+        <h3 class="mt-4">Seu Carrinho</h3>
+        <table class="table table-bordered mt-3" id="cart-table">
+            <thead class="table-light">
+                <tr>
+                    <th>Foto</th>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cart in carts %}
+                <tr data-product-id="{{ cart.product.id }}">
+                    <td>
+                        {% if cart.product and cart.product.image %}
+                        <img src="{{ cart.product.image.url }}" alt="{{ cart.product.title }}" width="80" height="80">
+                        {% else %}
+                        <img src="{% static 'images/BannerLogo.png' %}" alt="Sem produto" width="80" height="80">
+                        {% endif %}
+                    </td>
+                    <td>{% if cart.product %}{{ cart.product.title }}{% else %}Produto removido{% endif %}</td>
+                    <td><input type="number" class="qtde-input" value="{{ cart.qtde }}" min="1" data-price="{{ cart.subtotal|floatformat:2 }}"></td>
+                    <td class="subtotal">R$ {{ cart.subtotal|floatformat:2 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-end gap-4 mb-3" id="totalizador">
+            <span class="fw-bold">Total de itens: {{ total_itens }}</span>
+            <span class="fw-bold">Total do carrinho: R$ {{ cart_total|floatformat:2 }}</span>
+        </div>
+
+        <div class="mt-4 text-center">
+            <button type="button" class="btn btn-success mt-2" id="whatsapp-btn">
+                Enviar carrinho para o WhatsApp
+            </button>
+        </div>
+
+        {% else %}
+        <div class="alert alert-warning text-center mt-4">
+            <strong>Seu carrinho está vazio.</strong>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.getElementById("whatsapp-btn").addEventListener("click", function () {
+    const nome = document.getElementById("id_nome").value.trim();
+    const telefone = document.getElementById("id_telefone").value.trim();
+
+    if (!nome || !telefone) {
+        alert("Preencha Nome e Telefone antes de enviar!");
+        return;
+    }
+
+    const linhas = document.querySelectorAll("#cart-table tbody tr");
+    if (linhas.length === 0) {
+        alert("O carrinho está vazio!");
+        return;
+    }
+
+    const items = [];
+    const itensTexto = [];
+
+    linhas.forEach(tr => {
+        const produto = tr.cells[1].innerText.trim();
+        const qtde = parseInt(tr.querySelector(".qtde-input").value);
+        const subtotal = parseFloat(tr.querySelector(".subtotal").innerText.replace("R$", "").replace(",", "."));
+        const product_id = tr.dataset.productId;
+
+        items.push({ product_id, qtde, subtotal });
+        itensTexto.push(`- ${produto} (x${qtde}) = R$ ${subtotal.toFixed(2)}`);
+    });
+
+    // Pega CSRF token do form
+    const csrfToken = document.querySelector("[name=csrfmiddlewaretoken]").value;
+
+    fetch("/save_order/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": csrfToken
+        },
+        body: JSON.stringify({ nome, telefone, items })
+    })
+    .then(res => res.json())
+    .then(res => {
+        if (res.success) {
+            // Limpa tabela do carrinho
+            document.querySelector("#cart-table tbody").innerHTML = "";
+            document.getElementById("totalizador").innerHTML = "";
+
+            const mensagem = `📦 *Novo Pedido*\n\n👤 Nome: ${nome}\n📞 Telefone: ${telefone}\n\n🛒 Itens do Carrinho:\n${itensTexto.join("\n")}`;
+            const numeroLoja = "5565981132995"; // substitua pelo número real
+            // Abre WhatsApp em nova aba
+            window.open(`https://wa.me/${numeroLoja}?text=${encodeURIComponent(mensagem)}`, "_blank");
+
+            alert("Pedido enviado com sucesso!");
+        } else {
+            alert(res.error || "Erro ao gravar o pedido!");
+        }
+    })
+    .catch(() => alert("Erro ao conectar com o servidor."));
+});
+</script>
+{% endblock scripts %}

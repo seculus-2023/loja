@@ -8,10 +8,6 @@
     <a href="{% url 'category_list' %}" class="btn btn-secondary">&larr; Voltar às categorias</a>
 
     {% if carts %}
-    <div class="mt-4 text-end">
-        <button class="btn btn-success mt-2" id="whatsapp-btn">Enviar carrinho para o WhatsApp</button>
-        <button class="btn btn-primary mt-2 ms-2" id="email-btn">Enviar todos por Email</button>
-    </div>
 
     <script>
     document.getElementById('whatsapp-btn').addEventListener('click', function() {
@@ -104,6 +100,9 @@
     <div class="d-flex justify-content-end gap-4 mb-3">
         <span class="fw-bold">Total de itens: {{ total_itens }}</span>
         <span class="fw-bold">Total do carrinho: R$ {{ cart_total|floatformat:2 }}</span>
+    </div>
+    <div class="mt-4 text-end">
+        <a href="{% url 'pedido' %}" class="btn btn-primary mt-2 ms-2">Fazer Pedido</a>
     </div>
 
     {% else %}

@@ -2,7 +2,34 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    nome = models.CharField(max_length=255)
+    telefone = models.CharField(max_length=20)
+    # Você pode adicionar mais campos aqui, como endereço de entrega, status do pedido, etc.
+    
+    def __str__(self):
+        return f"Pedido #{self.id} de {self.nome}"
 
+    @property
+    def get_order_total(self):
+        # Acessa os itens do pedido usando o 'related_name'
+        total = sum(item.total for item in self.items.all())
+        return total
+
+# ---
+# Classe com o nome corrigido para 'OrderItem'
+class OrderItem(models.Model):
+    # O item agora está ligado ao Pedido (Order)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="items") 
+    product = models.ForeignKey('Product', on_delete=models.CASCADE)
+    qtde = models.PositiveIntegerField(default=1, verbose_name="Qtde")
+    subtotal = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
+    total = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
+    added = models.DateTimeField(auto_now_add=True, verbose_name="Adicionado em") # Adicionando o campo 'added'
+
+    def __str__(self):
+        return f"{self.product.title} x {self.qtde}"
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, verbose_name="Usuário")
