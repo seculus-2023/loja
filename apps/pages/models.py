@@ -1,16 +1,17 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     nome = models.CharField(max_length=255)
     telefone = models.CharField(max_length=20)
-    # Você pode adicionar mais campos aqui, como endereço de entrega, status do pedido, etc.
+    data_pedido = models.DateTimeField(default=timezone.now)  # <-- Aqui a data do pedido
     
     def __str__(self):
         return f"Pedido #{self.id} de {self.nome}"
-
+    
     @property
     def get_order_total(self):
         # Acessa os itens do pedido usando o 'related_name'
@@ -128,6 +129,10 @@ class Product(models.Model):
     )
     description = models.TextField(
         verbose_name="Descrição"
+    )
+    referencia = referencia = models.CharField(
+    max_length=40,
+    verbose_name="Referencia"
     )
     price = models.DecimalField(
         max_digits=20,

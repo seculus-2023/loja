@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Relatório de Pedidos</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #000; padding: 6px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        img { max-width: 50px; max-height: 50px; }
+        h1 { text-align: center; margin-bottom: 5px; }
+        p.periodo { text-align: center; font-weight: bold; margin-bottom: 20px; }
+        h2 { margin-top: 30px; background: #f9f9f9; padding: 8px; border: 1px solid #ddd; }
+        .pedido-total { text-align: right; font-weight: bold; background: #f1f1f1; }
+        p.total { text-align: right; font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Relatório de Pedidos</h1>
+    <p class="periodo">Período: {{ periodo }}</p>
+
+    {% for order in orders %}
+        <h2>Pedido #{{ order.id }} - {{ order.nome }} ({{ order.telefone }}) - {{ order.data_pedido|date:"d/m/Y H:i" }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Referencia</th>
+                    <th>Imagem</th>
+                    <th>Qtde</th>
+                    <th>Subtotal</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order.items.all %}
+                <tr>
+                    <td>{{ item.product.title }}</td>
+                    <td>{{ item.product.referencia|default:"-" }}</td>
+                    <td>
+                        {% if item.product.image %}
+                            <img src="{{ item.product.image.url }}">
+                        {% else %}
+                            Sem imagem
+                        {% endif %}
+                    </td>
+                    <td>{{ item.qtde }}</td>
+                    <td>R$ {{ item.subtotal|floatformat:2 }}</td>
+                    <td>R$ {{ item.total|floatformat:2 }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="5" class="pedido-total">Total do Pedido</td>
+                    <td class="pedido-total">R$ {{ order.get_order_total|floatformat:2 }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% endfor %}
+
+    <p class="total">Total Geral: R$ {{ total_geral|floatformat:2 }}</p>
+</body>
+</html>

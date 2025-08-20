@@ -41,6 +41,7 @@
                                     {% endif %}
                                     <h5 class="card-title">{{ product.title }}</h5>
                                     <p class="card-text">{{ product.description|truncatechars:100 }}</p>
+                                    <p class="card-text">{{ product.referencia|truncatechars:40 }}</p>
                                     <div class="d-flex gap-2 mt-auto justify-content-center">
                                         <p class="mb-0"><strong>R$ {{ product.price|floatformat:2 }}</strong></p>
                                         {% if product.price2 > 0 %}

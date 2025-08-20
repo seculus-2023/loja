@@ -54,6 +54,7 @@
             <tr>
                 <th>Foto</th>
                 <th>Produtos</th>
+                <th>Referencia</th>
                 <th>Qtde</th>
                 <th>Subtotal</th>
                 <th>Total</th>
@@ -79,6 +80,13 @@
                         {{ cart.title }}
                     {% else %}
                         Sem produto
+                    {% endif %}
+                </td>
+                <td>
+                    {% if cart.product %}
+                        {{ cart.product.referencia }}
+                    {% else %}
+                        Sem referencia
                     {% endif %}
                 </td>
                 <td>{{ cart.qtde }}</td>

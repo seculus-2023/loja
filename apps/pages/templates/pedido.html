@@ -38,6 +38,7 @@
                 <tr>
                     <th>Foto</th>
                     <th>Produto</th>
+                    <th>Referencia</th>
                     <th>Quantidade</th>
                     <th>Subtotal</th>
                 </tr>
@@ -53,6 +54,7 @@
                         {% endif %}
                     </td>
                     <td>{% if cart.product %}{{ cart.product.title }}{% else %}Produto removido{% endif %}</td>
+                    <td>{% if cart.product %}{{ cart.product.referencia }}{% else %}Sem referencia{% endif %}</td>
                     <td><input type="number" class="qtde-input" value="{{ cart.qtde }}" min="1" data-price="{{ cart.subtotal|floatformat:2 }}"></td>
                     <td class="subtotal">R$ {{ cart.subtotal|floatformat:2 }}</td>
                 </tr>
